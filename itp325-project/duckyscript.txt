@@ -1,0 +1,28 @@
+duckyscript.txt
+
+# Anthony Wittemann
+
+#	[5 points] Install a meterpreter backdoor (persistence) into the target system, without being detected by any anti-virus software
+
+
+#	[5 points] Download and install GPG
+
+
+#	[5 points] Generate a GPG key using the password “OMGWTFBBQChicken” without the quotes
+
+
+#	[5 points] Encrypt the current users home directory using the previous GPG keys. This means everything within it.
+
+
+#	[5 points] Export the public/private key from GPG onto a USB, and securely delete the GPG key from the system’s keychain
+
+
+#	[5 points] Install an addon for the default browser of the system.
+
+
+#	[5 points] Leave an unencrypted ransom note on the current user’s desktop. For bonus lulz, leave a meme.
+
+
+
+#   [10 points] Comments within the entire script, that explain what each section of the script is doing and how it is doing it
+
